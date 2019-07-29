@@ -1,5 +1,3 @@
-Find median for ARS, ARD and ARM
-
 SELECT qid, max(medianARS), max(medianARD), max(medianARM)
 FROM(SELECT qid, ooff,
 PERCENTILE_CONT(ARS, 0.5) OVER(PARTITION BY qid) as medianARS,
