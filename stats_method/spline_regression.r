@@ -79,3 +79,10 @@ akimodelsh<- gam(aki ~ ht+fb+vp+s(apa)+s(b,df=3) ,data=df1,family=binomial)
 summary(akimodelsh)
 par(mfrow=c(1,1))
 plot(akimodelsh, se=T, xlab="Median Systolic Blood Pressure", ylab="AKI", main="Keeping hypertension, fluid balance and ApacheIV as controls")
+
+################################
+# Plot with xlim and ylim
+gammodel1<-gam(actualhospitalmortality ~ hypertension+nettotal+vaso_binary+s(apache_iv)+s(ar_bp_sys) ,data=df1,family=binomial, na.action=na.exclude)
+summary(gammodel1)
+#par(mfrow=c(1,1))
+plot.Gam(gammodel1, se=T, xlab="Median Systolic Blood Pressure", ylab="Hospital Mortality Rate", main="Keeping hypertension, fluid balance and ApacheIV as controls", xlim = c(0,100), ylim=c(-2,2), xaxs="i",yaxs="i")
